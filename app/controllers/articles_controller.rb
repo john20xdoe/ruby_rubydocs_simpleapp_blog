@@ -8,6 +8,7 @@ class ArticlesController < ApplicationController
 	end
 	
 	def new
+		@article = Article.new
 	end
 	
 	#selecting an article for editing
@@ -39,6 +40,14 @@ class ArticlesController < ApplicationController
 		end
 	end
 
+	def destroy
+		@article = Article.find(params[:id])
+		@article.destroy
+
+		redirect_to articles_path
+	end
+
+	#@any private stuff
 	private
 		def article_params
 			params.require(:article).permit(:title, :text)
