@@ -2,5 +2,8 @@
 		<strong>Comment: </strong>
 		<%= comment.body %>	
 		<%= "-" + comment.commenter + ", " +comment.created_at.strftime("%d %b %y") %>
+		|
+		<%= link_to 'Destroy Comment', [comment.article, comment], method: :delete, 
+		data: {confirm: 'Are you sure?' } %>
 	</p>
 	
