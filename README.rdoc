@@ -26,3 +26,41 @@ Things you may want to cover:
 
 Please feel free to use a different markup language if you do not plan to run
 <tt>rake doc:app</tt>.
+
+App based on http://guides.rubyonrails.org/getting_started.html
+
+Create home page.
+rails generate controller controller_name action_method
+<tt>rails generate controller welcome index</tt>
+
+Routes:
+Define root as welcome#index
+Define REST resource resources :articles
+rake routes
+
+Define actions (new/create,edit/update,show,destroy,index)
+Define corresponding views (erb)
+
+Article: New
+	*use form_for to build article
+	*use url: articles_path
+
+Create Model (singular name)
+<tt>rails generate model Article title:string text:text</tt>
+
+Run rake db:migrate
+
+Article: Create
+	*instantiate @article = Article.new(params.require(:article).permit(:title, :text))
+	*save
+	*redirect_to @article
+
+Article: Show
+	@article = Article.find(params[:id])
+
+Article: Index (show all)
+	@articles = Article.all
+	*add view list: <tt>@articles.each do |article|</tt>
+
+Add links
+	*link_to 'display name', rake_path or controller
